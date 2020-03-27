@@ -1,14 +1,14 @@
-const path = require('path');
-const http = require('http');
-const express = require('express');
-const socketio = require('socket.io');
+import { join } from 'path';
+import { createServer } from 'http';
+import express, { static } from 'express';
+import socketio from 'socket.io';
 
 const app = express();
-const server = http.createServer(app);
+const server = createServer(app);
 const io = socketio(server);
 
 // Set static folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(static(join(__dirname, 'public')));
 
 // Run when FE connects
 
